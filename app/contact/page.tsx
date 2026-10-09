@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import DansranFooter from "@/components/dansran-footer"
 
 export default function ContactPage() {
   return (
@@ -31,6 +32,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <DansranFooter />
     </main>
   )
 }
