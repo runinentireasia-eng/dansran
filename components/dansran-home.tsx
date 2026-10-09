@@ -2,9 +2,30 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDownRight, ArrowUpRight, Menu, MoveDown, X } from "lucide-react"
+import ReactLenis from "lenis/react"
 import { useRef, useState } from "react"
 
 const plateImage = "/dansran-plate.png"
+
+type CharacterProps = {
+  char: string
+  index: number
+  centerIndex: number
+  progress: any
+}
+
+function AnimatedCharacter({ char, index, centerIndex, progress }: CharacterProps) {
+  const distance = index - centerIndex
+  const x = useTransform(progress, [0, 0.5], [distance * 2, 0])
+  const rotateX = useTransform(progress, [0, 0.5], [0, 0])
+  const scale = useTransform(progress, [0, 0.5], [0.98, 1])
+
+  return (
+    <motion.span className={char === " " ? "inline-block w-4" : "inline-block"} style={{ x, rotateX, scale }}>
+      {char}
+    </motion.span>
+  )
+}
 
 export function DansranHome() {
   const heroRef = useRef<HTMLElement>(null)
@@ -14,9 +35,13 @@ export function DansranHome() {
   const y = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [36, 0, -10, -50])
   const opacity = useTransform(scrollYProgress, [0, 0.14, 0.8, 1], [0.82, 1, 1, 0.45])
   const [menuOpen, setMenuOpen] = useState(false)
+  const title = "Жаргалтайн дэлгэр"
+  const titleCharacters = title.split("")
+  const titleCenter = Math.floor(titleCharacters.length / 2)
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#f6f4ef] text-[#172b35] selection:bg-[#e5b04b] selection:text-[#172b35]">
+    <ReactLenis root options={{ lerp: 0.08 }}>
+      <main className="min-h-screen overflow-x-hidden bg-[#f6f4ef] text-[#172b35] selection:bg-[#e5b04b] selection:text-[#172b35]">
       <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-5 mix-blend-multiply md:px-10 md:py-7">
         <a href="#top" className="group flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em]" aria-label="Dansran home">
           <span className="flex size-7 items-center justify-center rounded-full border border-[#172b35] text-[9px] transition-transform group-hover:rotate-45">D</span>
@@ -37,7 +62,7 @@ export function DansranHome() {
           <div className="pointer-events-none absolute left-5 top-28 flex max-w-[145px] flex-col gap-3 md:left-10 md:top-36"><span className="text-[9px] uppercase tracking-[0.25em] text-[#172b35]/60">01 / 03</span><p className="text-xs leading-relaxed text-[#172b35]/70">Objects that carry a little of Mongolia into the room.</p></div>
           <div className="pointer-events-none absolute right-5 top-28 max-w-[145px] text-right md:right-10 md:top-36"><span className="text-[9px] uppercase tracking-[0.25em] text-[#172b35]/60">Est. 2020</span><p className="mt-3 text-xs leading-relaxed text-[#172b35]/70">Made in Ulaanbaatar<br />for considered spaces.</p></div>
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y, opacity }} className="relative z-10 w-[min(74vw,660px)] max-w-none rounded-full object-contain drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
-          <motion.div style={{ opacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><span className="mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#172b35]/70">Dansran presents</span><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em] md:text-[13vw]">Жаргалтайн<br />дэлгэр</h1><p className="mt-8 max-w-xs text-sm leading-relaxed text-[#172b35]/75 md:max-w-sm">A new collection of ceramic accessories for warm, memorable places.</p></motion.div>
+          <motion.div style={{ opacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><span className="mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#172b35]/70">Dansran presents</span><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em] md:text-[13vw]" style={{ perspective: "500px" }}>{titleCharacters.map((char, index) => <AnimatedCharacter key={`${char}-${index}`} char={char} index={index} centerIndex={titleCenter} progress={scrollYProgress} />)}</h1><p className="mt-8 max-w-xs text-sm leading-relaxed text-[#172b35]/75 md:max-w-sm">A new collection of ceramic accessories for warm, memorable places.</p></motion.div>
           <div className="absolute bottom-8 flex flex-col items-center gap-3 text-[9px] font-semibold uppercase tracking-[0.28em] text-[#172b35]/60"><MoveDown className="size-4 animate-bounce" aria-hidden="true" />Scroll to explore</div>
         </div>
       </section>
@@ -47,7 +72,8 @@ export function DansranHome() {
       <section id="custom" className="bg-[#e7dfd2] px-5 py-28 md:px-10 md:py-40"><div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-2"><div><p className="mb-8 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#172b35]/60">02 — Custom inquiry</p><h2 className="max-w-xl text-6xl font-medium leading-[0.86] tracking-[-0.07em] md:text-8xl">Make it<br /><em className="font-serif font-normal">yours.</em></h2></div><div className="flex flex-col justify-end"><p className="max-w-md text-lg leading-relaxed text-[#172b35]/70">For teams, hosts and places with a point of view. We can create custom ceramic objects, gifting sets and table pieces for your next chapter.</p><a href="mailto:hello@dansran.com?subject=Custom%20inquiry" className="mt-10 flex w-fit items-center gap-5 rounded-full bg-[#172b35] px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#f6f4ef] transition-transform hover:-translate-y-1">Start a conversation <ArrowDownRight className="size-4" /></a></div></div></section>
 
       <footer className="flex flex-col gap-8 bg-[#e7dfd2] px-5 pb-8 md:flex-row md:items-end md:justify-between md:px-10"><div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em]"><span className="flex size-7 items-center justify-center rounded-full border border-[#172b35] text-[9px]">D</span>Dansran</div><div className="flex justify-between gap-8 text-[10px] uppercase tracking-[0.16em] text-[#172b35]/60 md:gap-12"><span>Ulaanbaatar, Mongolia</span><a href="mailto:hello@dansran.com" className="hover:text-[#172b35]">hello@dansran.com</a></div></footer>
-    </main>
+      </main>
+    </ReactLenis>
   )
 }
 
