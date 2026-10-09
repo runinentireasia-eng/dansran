@@ -41,9 +41,9 @@ export function DansranHome() {
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end end"] })
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 540])
-  const scale = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], [0.82, 1, 0.96, 0.78])
-  const y = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [20, 0, -4, 0])
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.22, 0.72, 0.92, 1], [0, 1, 1, 0.16, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], [0.92, 1, 1, 1])
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [12, 0, 0, 0])
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.18, 0.55, 0.82, 1], [0, 1, 1, 0.16, 0])
   const title = "Жаргалтайн дэлгэр"
   const titleCharacters = title.split("")
   const titleCenter = Math.floor(titleCharacters.length / 2)
@@ -51,7 +51,7 @@ export function DansranHome() {
   return (
     <ReactLenis root options={{ lerp: 0.08 }}>
       <main className="min-h-screen overflow-x-hidden bg-[#f6f4ef] text-[#172b35] selection:bg-[#e5b04b] selection:text-[#172b35]">
-      <section id="top" ref={heroRef} className="relative h-[220vh]">
+      <section id="top" ref={heroRef} className="relative h-[125vh]">
         <div className="sticky top-0 flex h-screen min-h-[660px] flex-col items-center justify-center overflow-hidden px-5">
           <div className="pointer-events-none absolute left-5 top-28 flex max-w-[145px] flex-col gap-3 md:left-10 md:top-36"><span className="text-[9px] uppercase tracking-[0.25em] text-[#172b35]/60">01 / 03</span><p className="text-xs leading-relaxed text-[#172b35]/70">Objects that carry a little of Mongolia into the room.</p></div>
           <div className="pointer-events-none absolute right-5 top-28 max-w-[145px] text-right md:right-10 md:top-36"><span className="text-[9px] uppercase tracking-[0.25em] text-[#172b35]/60">Est. 2020</span><p className="mt-3 text-xs leading-relaxed text-[#172b35]/70">Made in Ulaanbaatar<br />for considered spaces.</p></div>
