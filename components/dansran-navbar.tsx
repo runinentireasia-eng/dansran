@@ -6,9 +6,10 @@ import Link from "next/link"
 type DansranNavbarProps = {
   dark?: boolean
   hideCustom?: boolean
+  current?: "collection" | "custom" | "contact"
 }
 
-export default function DansranNavbar({ dark = false, hideCustom = false }: DansranNavbarProps) {
+export default function DansranNavbar({ dark = false, hideCustom = false, current }: DansranNavbarProps) {
   const textClass = dark ? "text-[#f6f4ef]" : "text-[#0E6287]"
   const logoClass = dark ? "brightness-0 invert" : ""
 
@@ -17,9 +18,9 @@ export default function DansranNavbar({ dark = false, hideCustom = false }: Dans
       <Link href="/" aria-label="Dansran home" className="mr-auto flex items-center max-sm:fixed max-sm:left-4 max-sm:top-4 max-sm:z-50">
         <img src="/dansran-logo-blue.svg" alt="Dansran" className={`h-7 w-auto ${logoClass}`} />
       </Link>
-      <motion.a href="/collection" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:py-3 max-sm:text-[8px]">Бэлэн коллекц</motion.a>
-      {!hideCustom && <motion.a href="/custom" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:py-3 max-sm:text-[8px]">Custom</motion.a>}
-      <motion.a href="/contact" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="cssbuttons-io-button max-sm:w-auto max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:text-[8px]">Холбогдох<span className="icon" aria-hidden="true"><svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none" /><path d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor" /></svg></span></motion.a>
+      {current !== "collection" && <motion.a href="/collection" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:py-3 max-sm:text-[8px]">Бэлэн коллекц</motion.a>}
+      {current !== "custom" && !hideCustom && <motion.a href="/custom" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:py-3 max-sm:text-[8px]">Custom</motion.a>}
+      {current !== "contact" && <motion.a href="/contact" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="cssbuttons-io-button max-sm:w-auto max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:text-[8px]">Холбогдох<span className="icon" aria-hidden="true"><svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none" /><path d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor" /></svg></span></motion.a>}
     </nav>
   )
 }

@@ -6,7 +6,7 @@ import DansranBreadcrumb from "@/components/ui/breadcrumb"
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#f6f4ef] px-5 py-6 text-[#0E6287] md:px-10 md:py-8">
-      <header className="mx-auto max-w-6xl"><DansranNavbar hideCustom /><div className="mt-5"><DansranBreadcrumb current="Холбогдох" /></div></header>
+      <header className="mx-auto max-w-6xl"><DansranNavbar hideCustom current="contact" /><div className="mt-5"><DansranBreadcrumb current="Холбогдох" /></div></header>
 
       <section className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl items-center py-20">
         <div className="w-full">
