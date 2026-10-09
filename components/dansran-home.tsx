@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import ReactLenis from "lenis/react"
 import { useRef } from "react"
 
 const plateImage = "/dansran-plate.png"
@@ -48,8 +47,7 @@ export function DansranHome() {
   const titleCenter = Math.floor(titleCharacters.length / 2)
 
   return (
-    <ReactLenis root options={{ lerp: 0.08 }}>
-      <main className="min-h-screen overflow-x-hidden bg-[#f6f4ef] text-[#0E6287] selection:bg-[#0E6287] selection:text-[#AAE7FF]">
+    <main className="min-h-screen overflow-x-hidden bg-[#f6f4ef] text-[#0E6287] selection:bg-[#0E6287] selection:text-[#AAE7FF]">
       <section id="top" ref={heroRef} className="relative h-[125vh]">
         <div className="sticky top-0 flex h-screen min-h-[660px] flex-col items-center justify-center overflow-hidden px-5">
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y }} className="relative z-10 w-[min(105vw,92vh)] max-w-none rounded-full object-contain mix-blend-multiply drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
@@ -63,7 +61,6 @@ export function DansranHome() {
 
       <section id="custom" className="bg-[#f6f4ef] px-5 py-16 text-[#0E6287] md:px-10 md:py-20"><div className="mx-auto max-w-6xl"><p className="text-[10px] font-semibold uppercase tracking-[0.24em]">Хамтдаа бүтээе</p><div className="mt-7 flex flex-col justify-between gap-7 border-b border-[#0E6287]/20 pb-10 md:flex-row md:items-end"><h2 className="max-w-2xl text-4xl leading-[0.98] tracking-[-0.06em] md:text-6xl">Энэ жилийн бэлгээ<br />өвөөр чимье.</h2><a href="/contact" className="inline-flex items-center gap-4 bg-[#0E6287] px-6 py-4 text-sm text-[#f6f4ef] transition-transform hover:-translate-y-1">Холбогдох <img src="/dansran-mark-blue.png" alt="" className="size-4 object-contain" /></a></div></div></section>
       </main>
-    </ReactLenis>
   )
 }
 
