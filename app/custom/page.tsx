@@ -1,0 +1,9 @@
+import Link from "next/link"
+import { ArrowDownRight, ArrowLeft } from "lucide-react"
+
+export default function CustomPage() {
+  return <main className="min-h-screen bg-[#e7dfd2] px-5 py-6 text-[#172b35] md:px-10 md:py-8">
+    <header className="mx-auto flex max-w-6xl items-center justify-between"><Link href="/" className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em]"><span className="flex size-7 items-center justify-center rounded-full border border-[#172b35] text-[9px]">D</span>Dansran</Link><Link href="/collection" className="text-[10px] uppercase tracking-[0.2em]">Ready to ship</Link></header>
+    <section className="mx-auto grid min-h-[calc(100vh-7rem)] max-w-6xl items-center gap-16 py-24 md:grid-cols-2"><div><Link href="/" className="mb-12 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#172b35]/55"><ArrowLeft className="size-4" /> Back home</Link><p className="mb-8 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#172b35]/60">02 — Custom inquiry</p><h1 className="max-w-xl text-7xl font-medium leading-[0.86] tracking-[-0.07em] md:text-9xl">Make it<br /><em className="font-serif font-normal">yours.</em></h1></div><div className="max-w-md"><p className="text-xl leading-relaxed text-[#172b35]/70">For teams, hosts and places with a point of view. Dansran can create custom ceramic objects, gifting sets and table pieces for your next chapter.</p><div className="mt-12 flex flex-col gap-4 border-t border-[#172b35]/20 pt-6 text-sm"><p>Tell us about your company, quantity, timeline and the kind of object you have in mind.</p><a href="mailto:hello@dansran.com?subject=Custom%20inquiry" className="flex w-fit items-center gap-5 rounded-full bg-[#172b35] px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#f6f4ef] transition-transform hover:-translate-y-1">Start a conversation <ArrowDownRight className="size-4" /></a></div></div></section>
+  </main>
+}

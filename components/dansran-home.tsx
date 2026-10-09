@@ -58,13 +58,13 @@ export function DansranHome() {
           Dansran
         </a>
         <nav className="hidden items-center gap-9 text-[10px] font-semibold uppercase tracking-[0.2em] md:flex" aria-label="Main navigation">
-          <a className="transition-opacity hover:opacity-50" href="#collection">Ready to ship</a>
-          <a className="transition-opacity hover:opacity-50" href="#custom">Custom inquiry</a>
+          <a className="transition-opacity hover:opacity-50" href="/collection">Ready to ship</a>
+          <a className="transition-opacity hover:opacity-50" href="/custom">Custom inquiry</a>
         </nav>
         <button className="flex size-9 items-center justify-center rounded-full border border-[#172b35] md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
           {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
-        {menuOpen && <nav className="absolute right-5 top-16 flex min-w-44 flex-col gap-4 rounded-2xl bg-[#172b35] p-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#f6f4ef] shadow-xl md:hidden"><a href="#collection" onClick={() => setMenuOpen(false)}>Ready to ship</a><a href="#custom" onClick={() => setMenuOpen(false)}>Custom inquiry</a></nav>}
+        {menuOpen && <nav className="absolute right-5 top-16 flex min-w-44 flex-col gap-4 rounded-2xl bg-[#172b35] p-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#f6f4ef] shadow-xl md:hidden"><a href="/collection" onClick={() => setMenuOpen(false)}>Ready to ship</a><a href="/custom" onClick={() => setMenuOpen(false)}>Custom inquiry</a></nav>}
       </header>
 
       <section id="top" ref={heroRef} className="relative h-[340vh]">
