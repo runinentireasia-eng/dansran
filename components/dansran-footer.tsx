@@ -17,7 +17,7 @@ export default function DansranFooter() {
           </nav>
         </div>
         <div className="relative mt-12 h-[230px] border-t border-current/15 pt-8 md:mt-16 md:h-[300px]">
-          <img src="/dansran-logo-blue.png" alt="Dansran" className="absolute bottom-[-0.08em] left-1/2 w-[120%] max-w-none -translate-x-1/2 object-contain md:w-[105%]" />
+          <img src="/dansran-logo-blue.svg" alt="Dansran" className="absolute bottom-[-0.08em] left-1/2 w-[120%] max-w-none -translate-x-1/2 object-contain md:w-[105%]" />
         </div>
         <div className="flex justify-between border-t border-current/15 py-5 text-xs opacity-50"><span>© DANSRAN · 2026</span><span>Монгол утга. Өдөр тутмын бүтээл.</span></div>
       </div>
