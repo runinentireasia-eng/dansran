@@ -7,7 +7,7 @@ export default function DansranFooter() {
         <div className="grid gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">Холбогдох</p>
-            <a href="mailto:hello@dansran.com" className="mt-3 inline-block underline underline-offset-4 transition-opacity hover:opacity-60">hello@dansran.com</a>
+            <Link href="/contact" className="mt-3 inline-block underline underline-offset-4 transition-opacity hover:opacity-60">info@dansran.mn</Link>
             <p className="mt-7 max-w-[220px] leading-relaxed opacity-60">Монгол утга. Өдөр тутмын бүтээл.</p>
           </div>
           <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 text-sm md:grid-cols-3">

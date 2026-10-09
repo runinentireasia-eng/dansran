@@ -1,0 +1,41 @@
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+
+export default function ContactPage() {
+  return (
+    <main className="min-h-screen bg-[#f6f4ef] px-5 py-6 text-[#0E6287] md:px-10 md:py-8">
+      <header className="mx-auto flex max-w-6xl items-center justify-between">
+        <Link href="/" aria-label="Dansran home" className="flex items-center">
+          <img src="/dansran-logo-blue.png" alt="Dansran" className="h-7 w-auto" />
+        </Link>
+        <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0E6287]/65 transition-opacity hover:opacity-60">
+          <ArrowLeft className="size-4" /> Нүүр хуудас
+        </Link>
+      </header>
+
+      <section className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl items-center py-20">
+        <div className="w-full">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em]">Холбогдох</p>
+          <div className="mt-8 grid gap-12 border-t border-[#0E6287]/20 pt-8 md:grid-cols-[1fr_1.1fr] md:gap-20">
+            <h1 className="max-w-xl text-6xl leading-[0.9] tracking-[-0.07em] md:text-8xl">Утга агуулгатай<br /><em className="font-serif font-normal">бэлэг бүтээе.</em></h1>
+            <div className="max-w-md">
+              <p className="mb-10 text-lg leading-relaxed text-[#0E6287]/70">Захиалгат бүтээл, хамтын ажиллагааны талаар бидэнтэй холбогдоно уу.</p>
+              <dl className="border-t border-[#0E6287]/20 text-base">
+                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Албан тушаал</dt><dd>Маркетинг менежер</dd></div>
+                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Утас</dt><dd><a href="tel:80792969" className="transition-opacity hover:opacity-60">80792969</a></dd></div>
+                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Цахим шуудан</dt><dd><a href="mailto:info@dansran.mn" className="transition-opacity hover:opacity-60">info@dansran.mn</a></dd></div>
+                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Вэб</dt><dd><a href="https://www.dansran.mn" target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">www.dansran.mn</a></dd></div>
+                <div className="flex justify-between gap-6 py-5"><dt className="text-[#0E6287]/60">Инстаграм</dt><dd><a href="https://instagram.com/dansran_mongolia" target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">@dansran_mongolia</a></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+export const metadata = {
+  title: "Холбогдох — Dansran",
+  description: "Dansran-тай холбогдох мэдээлэл.",
+}
