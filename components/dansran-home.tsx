@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDownRight, ArrowUpRight, MoveDown } from "lucide-react"
 import ReactLenis from "lenis/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 const plateImage = "/dansran-plate.png"
 
@@ -44,6 +44,7 @@ export function DansranHome() {
   const scale = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], [0.92, 1, 1, 1])
   const y = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [12, 0, 0, 0])
   const titleOpacity = useTransform(scrollYProgress, [0, 0.18, 0.55, 0.82, 1], [0, 1, 1, 0.16, 0])
+  const [menuOpen, setMenuOpen] = useState(false)
   const title = "Жаргалтайн дэлгэр"
   const titleCharacters = title.split("")
   const titleCenter = Math.floor(titleCharacters.length / 2)
@@ -57,10 +58,14 @@ export function DansranHome() {
           <div className="pointer-events-none absolute right-5 top-28 max-w-[145px] text-right md:right-10 md:top-36"><span className="text-[9px] uppercase tracking-[0.25em] text-[#172b35]/60">Est. 2020</span><p className="mt-3 text-xs leading-relaxed text-[#172b35]/70">Made in Ulaanbaatar<br />for considered spaces.</p></div>
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y }} className="relative z-10 w-[min(105vw,92vh)] max-w-none rounded-full object-contain drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
           <motion.span aria-hidden="true" style={{ rotate, scale, y }} className="pointer-events-none absolute z-20 size-[23vh] rounded-full bg-[#f6f4ef]" />
-          <nav aria-label="Main navigation" className="absolute left-1/2 top-1/2 z-30 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 text-center text-[9px] font-semibold uppercase tracking-[0.18em] md:flex-row md:gap-6 md:text-[10px] md:tracking-[0.16em]">
-            <a href="/collection" className="rounded-full bg-[#f6f4ef]/80 px-3 py-2 backdrop-blur-sm transition-colors hover:bg-[#f6f4ef]">Ready to ship</a>
-            <a href="#top" aria-label="Dansran home" className="order-first flex size-12 items-center justify-center rounded-full border border-[#172b35] bg-[#f6f4ef]/80 text-[10px] tracking-[0.1em] backdrop-blur-sm transition-transform hover:rotate-45 md:order-none">D</a>
-            <a href="/custom" className="rounded-full bg-[#f6f4ef]/80 px-3 py-2 backdrop-blur-sm transition-colors hover:bg-[#f6f4ef]">Custom inquiry</a>
+          <nav aria-label="Main navigation" className="absolute left-1/2 top-1/2 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+            <button type="button" aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen((open) => !open)} className="flex size-[23vh] min-h-28 min-w-28 items-center justify-center rounded-full border border-[#172b35]/25 bg-[#f6f4ef]/95 text-[10px] font-semibold uppercase tracking-[0.16em] shadow-[0_12px_30px_rgba(23,43,53,0.1)] backdrop-blur-sm transition-transform duration-500 hover:scale-105">
+              <span className="flex flex-col items-center gap-2"><span className="text-[13px] tracking-[0.1em]">D</span><span>{menuOpen ? "Close" : "Explore"}</span></span>
+            </button>
+            <div className={`pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[380px] max-w-[78vw] -translate-x-1/2 -translate-y-1/2 items-center justify-between gap-2 transition-all duration-500 md:gap-4 ${menuOpen ? "scale-100 opacity-100" : "scale-75 opacity-0"}`} aria-hidden={!menuOpen}>
+              <a tabIndex={menuOpen ? 0 : -1} href="/collection" className="relative z-50 pointer-events-auto whitespace-nowrap rounded-full border border-[#172b35] bg-[#172b35] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#f6f4ef] shadow-lg transition-transform hover:-translate-y-1">Ready to ship</a>
+              <a tabIndex={menuOpen ? 0 : -1} href="/custom" className="relative z-50 pointer-events-auto whitespace-nowrap rounded-full border border-[#172b35] bg-[#e5b04b] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#172b35] shadow-lg transition-transform hover:-translate-y-1">Custom inquiry</a>
+            </div>
           </nav>
           <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><span className="mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#172b35]/70">Dansran presents</span><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em] md:text-[13vw]" style={{ perspective: "500px" }}>{titleCharacters.map((char, index) => <AnimatedCharacter key={`${char}-${index}`} char={char} index={index} centerIndex={titleCenter} progress={scrollYProgress} />)}</h1><p className="mt-8 max-w-xs text-sm leading-relaxed text-[#172b35]/75 md:max-w-sm">A new collection of ceramic accessories for warm, memorable places.</p></motion.div>
           <div className="absolute bottom-8 flex flex-col items-center gap-3 text-[9px] font-semibold uppercase tracking-[0.28em] text-[#172b35]/60"><MoveDown className="size-4 animate-bounce" aria-hidden="true" />Scroll to explore</div>
