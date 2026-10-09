@@ -9,8 +9,8 @@ export default function DansranFooter() {
           <p className="mt-3 opacity-60">Монгол утга. Өдөр тутмын бүтээл.</p>
         </div>
         <div className="flex gap-8 opacity-70">
-          <Link href="/collection">Жаргалтайн дэлгэр</Link>
-          <Link href="/custom">Холбогдох</Link>
+          <Link className="transition-transform duration-300 hover:translate-x-1" href="/collection">Жаргалтайн дэлгэр</Link>
+          <Link className="transition-transform duration-300 hover:translate-x-1" href="/custom">Холбогдох</Link>
         </div>
         <span className="text-xs opacity-50">© DANSRAN · 2026</span>
       </div>
