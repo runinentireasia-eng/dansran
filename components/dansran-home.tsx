@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import DansranNavbar from "@/components/dansran-navbar"
+import DansranBreadcrumb from "@/components/ui/breadcrumb"
 
 const plateImage = "/dansran-plate.png"
 
@@ -54,7 +55,7 @@ export function DansranHome() {
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y }} className="relative z-10 w-[min(105vw,92vh)] max-w-none rounded-full object-contain mix-blend-multiply drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
           <span aria-hidden="true" className="pointer-events-none absolute z-20 size-[19vh] rounded-full bg-[#f6f4ef]" />
           <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em]" style={{ perspective: "500px" }}>{titleCharacters.map((char, index) => <AnimatedCharacter key={`${char}-${index}`} char={char} index={index} centerIndex={titleCenter} progress={scrollYProgress} />)}</h1></motion.div>
-          <div className="absolute inset-x-5 top-5 z-40 md:inset-x-10 md:top-8"><DansranNavbar /></div>
+          <div className="absolute inset-x-5 top-5 z-40 md:inset-x-10 md:top-8"><DansranNavbar /><div className="mt-5"><DansranBreadcrumb current="Нүүр хуудас" /></div></div>
         </div>
       </section>
 
