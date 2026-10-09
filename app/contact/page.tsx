@@ -1,18 +1,11 @@
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
 import DansranFooter from "@/components/dansran-footer"
+import DansranNavbar from "@/components/dansran-navbar"
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#f6f4ef] px-5 py-6 text-[#0E6287] md:px-10 md:py-8">
-      <header className="mx-auto flex max-w-6xl items-center justify-between">
-        <Link href="/" aria-label="Dansran home" className="flex items-center">
-          <img src="/dansran-logo-blue.png" alt="Dansran" className="h-7 w-auto" />
-        </Link>
-        <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0E6287]/65 transition-opacity hover:opacity-60">
-          <ArrowLeft className="size-4" /> Нүүр хуудас
-        </Link>
-      </header>
+      <header className="mx-auto max-w-6xl"><DansranNavbar hideCustom /></header>
 
       <section className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl items-center py-20">
         <div className="w-full">
