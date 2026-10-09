@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import ReactLenis from "lenis/react"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 const plateImage = "/dansran-plate.png"
 
@@ -43,8 +43,6 @@ export function DansranHome() {
   const scale = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], [0.92, 1, 1, 1])
   const y = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [12, 0, 0, 0])
   const titleOpacity = useTransform(scrollYProgress, [0, 0.18, 0.55, 0.82, 1], [0, 1, 1, 0.16, 0])
-  const menuSize = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], ["23vh", "27vh", "21vh", "15vh"])
-  const [menuOpen, setMenuOpen] = useState(false)
   const title = "Жаргалтайн дэлгэр"
   const titleCharacters = title.split("")
   const titleCenter = Math.floor(titleCharacters.length / 2)
@@ -55,16 +53,7 @@ export function DansranHome() {
       <section id="top" ref={heroRef} className="relative h-[125vh]">
         <div className="sticky top-0 flex h-screen min-h-[660px] flex-col items-center justify-center overflow-hidden px-5">
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y }} className="relative z-10 w-[min(105vw,92vh)] max-w-none rounded-full object-contain mix-blend-multiply drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
-          <motion.span aria-hidden="true" animate={{ scale: menuOpen ? [1, 1.12, 1] : [1, 1.04, 1], opacity: menuOpen ? [0.25, 0, 0.25] : [0.18, 0, 0.18] }} transition={{ duration: 2.4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }} style={{ width: menuSize, height: menuSize }} className="pointer-events-none absolute z-20 rounded-full border border-[#0E6287]" />
-          <nav aria-label="Main navigation" className="absolute left-1/2 top-1/2 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-            <motion.button type="button" aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen((open) => !open)} style={{ width: menuSize, height: menuSize }} animate={{ rotate: menuOpen ? 180 : 0 }} transition={{ type: "spring", stiffness: 180, damping: 15 }} className="group flex min-h-28 min-w-28 items-center justify-center rounded-full border border-[#0E6287]/25 bg-[#f6f4ef]/95 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0E6287] shadow-[0_12px_30px_rgba(14,98,135,0.16)] backdrop-blur-sm">
-              <span className="flex flex-col items-center gap-2"><img src="/dansran-mark-blue.png" alt="Dansran" className="size-9 object-contain" /><span className="flex gap-1"><i className="size-1 rounded-full bg-[#0E6287]" /><i className="size-1 rounded-full bg-[#0E6287]" /><i className="size-1 rounded-full bg-[#0E6287]" /></span></span>
-            </motion.button>
-            <motion.div initial={false} animate={menuOpen ? "open" : "closed"} variants={{ open: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } }, closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } } }} className="pointer-events-none absolute left-1/2 top-1/2 z-40 flex w-[380px] max-w-[78vw] -translate-x-1/2 -translate-y-1/2 items-center justify-between gap-2 md:gap-4" aria-hidden={!menuOpen}>
-              <motion.a variants={{ open: { opacity: 1, x: 0, scale: 1 }, closed: { opacity: 0, x: 34, scale: 0.7 } }} tabIndex={menuOpen ? 0 : -1} href="/collection" className="relative z-50 pointer-events-auto whitespace-nowrap rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] shadow-lg transition-transform hover:-translate-y-1">Ready to ship</motion.a>
-              <motion.a variants={{ open: { opacity: 1, x: 0, scale: 1 }, closed: { opacity: 0, x: -34, scale: 0.7 } }} tabIndex={menuOpen ? 0 : -1} href="/custom" className="relative z-50 pointer-events-auto whitespace-nowrap rounded-full border border-[#0E6287] bg-[#AAE7FF] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#0E6287] shadow-lg transition-transform hover:-translate-y-1">Custom inquiry</motion.a>
-            </motion.div>
-          </nav>
+          <span aria-hidden="true" className="pointer-events-none absolute z-20 size-[19vh] rounded-full bg-[#f6f4ef]" />
           <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em]" style={{ perspective: "500px" }}>{titleCharacters.map((char, index) => <AnimatedCharacter key={`${char}-${index}`} char={char} index={index} centerIndex={titleCenter} progress={scrollYProgress} />)}</h1></motion.div>
           <div className="absolute bottom-8 z-40 flex items-center gap-3"><a href="/collection" className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF]">Ready to ship</a><a href="/custom" className="rounded-full border border-[#0E6287] bg-[#AAE7FF] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#0E6287]">Custom inquiry</a></div>
         </div>
