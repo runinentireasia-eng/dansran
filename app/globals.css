@@ -46,11 +46,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 999px;
   background: #f6f4ef;
   color: #0e6287;
+  flex: 0 0 1.8rem;
+  overflow: hidden;
   transition: transform 180ms ease;
 }
 
+.cssbuttons-io-button .icon img {
+  width: 1.15rem;
+  height: 1.15rem;
+  object-fit: contain;
+}
+
 .cssbuttons-io-button:hover { transform: translateY(-3px); }
-.cssbuttons-io-button:hover .icon { transform: translateX(3px); }
+.cssbuttons-io-button:hover .icon { transform: none; }
 .cssbuttons-io-button:active { transform: translateY(-1px) scale(0.98); }
 .cssbuttons-io-button:focus-visible { outline: 2px solid #e5b04b; outline-offset: 3px; }
 
