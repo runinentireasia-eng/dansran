@@ -8,7 +8,6 @@ export default function DansranFooter() {
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">Холбогдох</p>
             <Link href="/contact" className="mt-3 inline-block underline underline-offset-4 transition-opacity hover:opacity-60">info@dansran.mn</Link>
-            <p className="mt-7 max-w-[220px] leading-relaxed opacity-60">Монголдоо бүтээж, Монголдоо үлдээв</p>
           </div>
           <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 text-sm md:grid-cols-3">
             <div className="flex flex-col gap-2"><Link className="transition-transform duration-300 hover:translate-x-1" href="/collection">Жаргалтайн дэлгэр</Link><Link className="transition-transform duration-300 hover:translate-x-1" href="/custom">Захиалгат бүтээл</Link></div>
