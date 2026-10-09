@@ -23,10 +23,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .cssbuttons-io-button {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 0.6rem;
   border: 1px solid #0e6287;
-  border-radius: 999px;
+  border-radius: 9999px !important;
+  height: 2.5rem;
   padding: 0.7rem 0.8rem 0.7rem 1rem;
   background: #0e6287;
   color: #f6f4ef;
