@@ -20,4 +20,41 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #f6f4ef; font-family: Arial, Helvetica, sans-serif; }
 button, a { -webkit-tap-highlight-color: transparent; }
+
+.cssbuttons-io-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid #0e6287;
+  border-radius: 999px;
+  padding: 0.7rem 0.8rem 0.7rem 1rem;
+  background: #0e6287;
+  color: #f6f4ef;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.cssbuttons-io-button .icon {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 999px;
+  background: #f6f4ef;
+  color: #0e6287;
+  transition: transform 180ms ease;
+}
+
+.cssbuttons-io-button:hover { transform: translateY(-3px); }
+.cssbuttons-io-button:hover .icon { transform: translateX(3px); }
+.cssbuttons-io-button:active { transform: translateY(-1px) scale(0.98); }
+.cssbuttons-io-button:focus-visible { outline: 2px solid #e5b04b; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cssbuttons-io-button, .cssbuttons-io-button .icon { transition: none; }
+}
 ::selection { background: #e5b04b; color: #172b35; }
