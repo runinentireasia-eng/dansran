@@ -10,7 +10,6 @@ export default function ContactPage() {
 
       <section className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl items-center py-20">
         <div className="w-full">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.24em]">Холбогдох</p>
           <div className="mt-8 grid gap-12 border-t border-[#0E6287]/20 pt-8 md:grid-cols-[1fr_1.1fr] md:gap-20">
             <h1 className="max-w-xl text-6xl leading-[0.9] tracking-[-0.07em] md:text-8xl">Утга агуулгатай<br /><em className="font-serif font-normal">бэлэг бүтээе.</em></h1>
             <div className="max-w-md">
