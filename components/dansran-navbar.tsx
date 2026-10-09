@@ -19,7 +19,7 @@ export default function DansranNavbar({ dark = false, hideCustom = false }: Dans
       </Link>
       <motion.a href="/collection" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF]">Бэлэн коллекц</motion.a>
       {!hideCustom && <motion.a href="/custom" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF]">Custom</motion.a>}
-      <motion.a href="/contact" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="cssbuttons-io-button">Холбогдох<span className="icon" aria-hidden="true"><img src="/dansran-mark-blue.png" alt="" /></span></motion.a>
+      <motion.a href="/contact" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="cssbuttons-io-button">Холбогдох<span className="icon" aria-hidden="true"><svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none" /><path d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor" /></svg></span></motion.a>
     </nav>
   )
 }
