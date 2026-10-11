@@ -15,7 +15,7 @@ export default function DansranNavbar({ dark = false, hideCustom = false, curren
 
   return (
     <nav aria-label="Main navigation" className={`mx-auto flex max-w-6xl items-center gap-3 ${textClass} max-sm:fixed max-sm:inset-x-3 max-sm:bottom-3 max-sm:z-50 max-sm:gap-2 max-sm:rounded-2xl max-sm:bg-[#f6f4ef]/95 max-sm:p-2 max-sm:shadow-[0_8px_30px_rgba(14,98,135,0.18)] ${dark ? "max-sm:bg-[#172b35]/95" : ""}`}>
-      <Link href="/" aria-label="Dansran home" className="mr-auto flex items-center max-sm:fixed max-sm:left-4 max-sm:top-4 max-sm:z-50">
+      <Link href="/" aria-label="Dansran home" className="mr-auto flex items-center max-sm:fixed max-sm:left-1/2 max-sm:top-4 max-sm:z-50 max-sm:-translate-x-1/2">
         <img src="/dansran-logo-blue.svg" alt="Dansran" className={`h-7 w-auto ${logoClass}`} />
       </Link>
       {current !== "collection" && <motion.a href="/collection" whileHover={{ y: -4, scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 360, damping: 18 }} className="rounded-full border border-[#0E6287] bg-[#0E6287] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#AAE7FF] max-sm:flex-1 max-sm:justify-center max-sm:px-2 max-sm:py-3 max-sm:text-[8px]">Бэлэн коллекц</motion.a>}
