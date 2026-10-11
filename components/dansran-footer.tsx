@@ -1,14 +1,14 @@
 import Link from "next/link"
 
-export default function DansranFooter() {
+export default function DansranFooter({ hideContact = false }: { hideContact?: boolean }) {
   return (
     <footer className="overflow-hidden border-t border-current/15 px-5 pt-10 text-sm md:px-10 md:pt-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
-          <div>
+          {!hideContact && <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">Холбогдох</p>
             <Link href="/contact" className="mt-3 inline-block underline underline-offset-4 transition-opacity hover:opacity-60">info@dansran.mn</Link>
-          </div>
+          </div>}
           <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 text-sm md:grid-cols-3">
             <div className="flex flex-col gap-2"><Link className="transition-transform duration-300 hover:translate-x-1" href="/collection">Жаргалтайн дэлгэр</Link><Link className="transition-transform duration-300 hover:translate-x-1" href="/custom">Захиалгат бүтээл</Link></div>
             <div className="flex flex-col gap-2"><Link className="transition-transform duration-300 hover:translate-x-1" href="/">Нүүр хуудас</Link><Link className="transition-transform duration-300 hover:translate-x-1" href="/custom">Хамтдаа бүтээе</Link></div>

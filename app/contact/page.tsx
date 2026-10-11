@@ -25,7 +25,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <DansranFooter />
+      <DansranFooter hideContact />
     </main>
   )
 }
