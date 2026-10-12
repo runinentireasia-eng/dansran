@@ -15,7 +15,7 @@ export default function DansranNavbar({ dark = false, hideCustom = false, curren
   const logoClass = dark ? "brightness-0 invert" : ""
 
   return (
-    <nav aria-label="Main navigation" className={`mx-auto flex max-w-6xl items-center gap-3 ${textClass} max-sm:fixed max-sm:inset-x-3 max-sm:bottom-3 max-sm:z-50 max-sm:gap-2 max-sm:rounded-2xl max-sm:bg-[#f6f4ef]/95 max-sm:p-2 max-sm:shadow-[0_8px_30px_rgba(14,98,135,0.18)] ${dark ? "max-sm:bg-[#172b35]/95" : ""}`}>
+    <nav aria-label="Main navigation" className={`mx-auto flex max-w-6xl items-center gap-3 ${hideLogo ? "sm:justify-end" : ""} ${textClass} max-sm:fixed max-sm:inset-x-3 max-sm:bottom-3 max-sm:z-50 max-sm:gap-2 max-sm:rounded-2xl max-sm:bg-[#f6f4ef]/95 max-sm:p-2 max-sm:shadow-[0_8px_30px_rgba(14,98,135,0.18)] ${dark ? "max-sm:bg-[#172b35]/95" : ""}`}>
       {!hideLogo && <Link href="/" aria-label="Dansran home" className="mr-auto flex items-center max-sm:fixed max-sm:left-1/2 max-sm:top-4 max-sm:z-50 max-sm:-translate-x-1/2">
         <img src="/dansran-logo-blue.svg" alt="Dansran" className={`h-7 w-auto ${logoClass}`} />
       </Link>}
