@@ -1,58 +1,88 @@
 "use client"
 
 import { useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { productHref, type DansranProduct } from "@/lib/dansran-products"
+
+const arrowClass =
+  "absolute top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#172b35]/75 text-[#f6f4ef] shadow-md backdrop-blur transition hover:bg-[#172b35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5b04b]"
 
 export function ProductGalleryCard({ product }: { product: DansranProduct }) {
   const [active, setActive] = useState(0)
   const { name, code, price, size, slug, images } = product
   const href = productHref(slug)
+  const count = images.length
+
+  const go = (step: number) => setActive((current) => (current + step + count) % count)
 
   return (
     <article className="group">
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        className="relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#e7dfd2]"
+      <div
+        className="relative"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={`${name} зургууд`}
       >
-        {images.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt={`${name} — зураг ${index + 1}`}
-            loading={index === 0 ? "eager" : "lazy"}
-            className={cn(
-              "absolute inset-0 size-full object-cover transition-[opacity,transform] duration-700 group-hover:scale-105",
-              index === active ? "opacity-100" : "opacity-0",
-            )}
-          />
-        ))}
-        <span className="sr-only">{`${name} бүтээгдэхүүний хуудас руу очих`}</span>
-      </a>
-
-      {images.length > 1 && (
-        <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label={`${name} зургууд`}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#e7dfd2]"
+        >
           {images.map((src, index) => (
-            <button
+            <img
               key={src}
-              type="button"
-              onClick={() => setActive(index)}
-              onMouseEnter={() => setActive(index)}
-              onFocus={() => setActive(index)}
-              aria-label={`${index + 1}-р зургийг харах`}
-              aria-pressed={index === active}
+              src={src}
+              alt={`${name} — зураг ${index + 1}`}
+              loading={index === 0 ? "eager" : "lazy"}
+              aria-hidden={index !== active}
               className={cn(
-                "aspect-square overflow-hidden rounded-xl bg-[#e7dfd2] ring-offset-2 ring-offset-[#172b35] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5b04b]",
-                index === active ? "opacity-100 ring-1 ring-[#f6f4ef]/70" : "opacity-50 hover:opacity-90",
+                "absolute inset-0 size-full object-cover transition-opacity duration-500",
+                index === active ? "opacity-100" : "opacity-0",
               )}
-            >
-              <img src={src} alt="" loading="lazy" className="size-full object-cover" />
-            </button>
+            />
           ))}
-        </div>
-      )}
+          <span className="sr-only">{`${name} бүтээгдэхүүний хуудас руу очих`}</span>
+        </a>
+
+        {count > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Өмнөх зураг"
+              className={cn(arrowClass, "left-3")}
+            >
+              <ChevronLeft className="size-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Дараагийн зураг"
+              className={cn(arrowClass, "right-3")}
+            >
+              <ChevronRight className="size-5" aria-hidden="true" />
+            </button>
+
+            <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-[#172b35]/60 px-2.5 py-1.5 backdrop-blur">
+              {images.map((src, index) => (
+                <button
+                  key={src}
+                  type="button"
+                  onClick={() => setActive(index)}
+                  aria-label={`${index + 1}-р зураг`}
+                  aria-current={index === active}
+                  className={cn(
+                    "h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5b04b]",
+                    index === active ? "w-5 bg-[#f6f4ef]" : "w-1.5 bg-[#f6f4ef]/50 hover:bg-[#f6f4ef]/80",
+                  )}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
 
       <a href={href} target="_blank" rel="noreferrer" className="mt-4 flex items-start justify-between gap-4">
         <div>
