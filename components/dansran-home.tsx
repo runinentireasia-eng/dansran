@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import Link from "next/link"
 import DansranNavbar from "@/components/dansran-navbar"
 
 const plateImage = "/dansran-plate.png"
@@ -52,9 +53,9 @@ export function DansranHome() {
       <section id="top" ref={heroRef} className="relative h-[125vh]">
         <div className="sticky top-0 flex h-screen min-h-[660px] flex-col items-center justify-center overflow-hidden px-5">
           <motion.img src={plateImage} alt="Hand-painted ceramic oval plate with a central opening, horses, clouds and a mountain" style={{ rotate, scale, y }} className="relative z-10 w-[min(105vw,92vh)] max-w-none rounded-full object-contain mix-blend-multiply drop-shadow-[0_34px_38px_rgba(23,43,53,0.18)]" />
-          <span aria-hidden="true" className="pointer-events-none absolute z-20 size-[19vh] rounded-full bg-[#f6f4ef]" />
+          <span aria-hidden="true" className="pointer-events-none absolute z-20 size-[19vh] max-sm:size-[11vh] rounded-full bg-[#f6f4ef]" />
           <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute z-20 flex flex-col items-center text-center"><h1 className="max-w-3xl text-[17vw] font-medium leading-[0.78] tracking-[-0.09em]" style={{ perspective: "500px" }}>{titleCharacters.map((char, index) => <AnimatedCharacter key={`${char}-${index}`} char={char} index={index} centerIndex={titleCenter} progress={scrollYProgress} />)}</h1></motion.div>
-          <div className="absolute inset-x-5 top-5 z-40 md:inset-x-10 md:top-8"><DansranNavbar /></div>
+          <Link href="/" aria-label="Dansran home" className="absolute left-1/2 top-4 z-[5] -translate-x-1/2 md:hidden"><img src="/dansran-logo-blue.svg" alt="Dansran" className="h-7 w-auto" /></Link><div className="absolute inset-x-5 top-5 z-40 md:inset-x-10 md:top-8"><DansranNavbar hideLogo /></div>
         </div>
       </section>
 
