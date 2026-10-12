@@ -1,3 +1,4 @@
+import CustomRequestForm from "@/components/custom-request-form"
 import DansranFooter from "@/components/dansran-footer"
 import DansranNavbar from "@/components/dansran-navbar"
 import DansranBreadcrumb from "@/components/ui/breadcrumb"
@@ -68,6 +69,18 @@ export default function CustomPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section id="request" className="bg-[#dceff4] px-5 pb-20 pt-4 md:px-10 md:pb-28">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_2fr]">
+          <div>
+            <h2 className="text-4xl tracking-[-0.05em] md:text-5xl">Хүсэлт илгээх</h2>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#0E6287]/70">
+              Хүссэн бүтээгдэхүүн, тоо ширхэг, хугацаагаа бичээд илгээгээрэй. Бид тантай эргэн холбогдоно.
+            </p>
+          </div>
+          <CustomRequestForm />
         </div>
       </section>
 
