@@ -6,7 +6,7 @@ import { submitCustomRequest, type CustomRequestState } from "@/app/actions/cust
 const initialState: CustomRequestState = { status: "idle" }
 
 const inputClass =
-  "w-full border-b border-[#0E6287]/25 bg-transparent py-3 text-base text-[#0E6287] placeholder:text-[#0E6287]/40 focus:border-[#0E6287] focus:outline-none"
+  "w-full border-b border-[#0E6287]/25 bg-transparent py-2 text-base text-[#0E6287] placeholder:text-[#0E6287]/40 focus:border-[#0E6287] focus:outline-none"
 
 export default function CustomRequestForm() {
   const [state, formAction, pending] = useActionState(submitCustomRequest, initialState)
@@ -21,7 +21,7 @@ export default function CustomRequestForm() {
   }
 
   return (
-    <form action={formAction} className="grid gap-8 border-t border-[#0E6287]/20 pt-8 md:grid-cols-2 md:gap-x-10">
+    <form action={formAction} className="grid gap-4 border-t border-[#0E6287]/20 pt-4 md:grid-cols-2 md:gap-x-6">
       <label className="block">
         <span className="text-xs uppercase tracking-[0.18em] text-[#0E6287]/60">Нэр *</span>
         <input name="name" required maxLength={120} autoComplete="name" className={inputClass} />
@@ -41,14 +41,14 @@ export default function CustomRequestForm() {
           required
           minLength={5}
           maxLength={3000}
-          rows={5}
+          rows={3}
           placeholder="Ямар бүтээгдэхүүн, хэдэн ширхэг, хэзээ хэрэгтэй вэ?"
           className={`${inputClass} resize-none`}
         />
       </label>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
-      <div className="flex flex-col gap-4 md:col-span-2 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-3 md:col-span-2 md:flex-row md:items-center md:justify-between">
         <p aria-live="polite" className="text-sm text-red-700">
           {state.status === "error" ? state.message : null}
         </p>

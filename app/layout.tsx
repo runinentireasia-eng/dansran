@@ -1,7 +1,17 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
 import { CustomCursor } from '@/components/custom-cursor'
 import './globals.css'
+
+const nunito = localFont({
+  src: [
+    { path: './fonts/Nunito-Variable.ttf', weight: '200 900', style: 'normal' },
+    { path: './fonts/Nunito-Italic-Variable.ttf', weight: '200 900', style: 'italic' },
+  ],
+  variable: '--font-nunito',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Dansran — Жаргалтайн дэлгэр',
@@ -40,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="mn" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="mn" className={nunito.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         {children}
         <CustomCursor />

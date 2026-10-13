@@ -1,5 +1,4 @@
-import Link from "next/link"
-import DansranFooter from "@/components/dansran-footer"
+import CustomRequestForm from "@/components/custom-request-form"
 import DansranNavbar from "@/components/dansran-navbar"
 import DansranBreadcrumb from "@/components/ui/breadcrumb"
 import { TextBlurIn } from "@/components/ui/text-blur-in"
@@ -12,7 +11,7 @@ export default function ContactPage() {
       <section className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl items-center py-20">
         <div className="w-full">
           <div className="mt-8 grid gap-12 border-t border-[#0E6287]/20 pt-8 md:grid-cols-[1fr_1.1fr] md:gap-20">
-            <h1 className="max-w-xl text-6xl leading-[0.9] tracking-[-0.07em] md:text-8xl">Утга агуулгатай<br /><em className="font-serif font-normal">бэлэг бүтээе.</em></h1>
+            <h1 className="max-w-xl text-6xl leading-[0.9] tracking-[-0.07em] md:text-8xl">Утга агуулгатай<br /><em className="font-sans italic font-normal">бэлэг бүтээе.</em></h1>
             <div className="max-w-md">
               <TextBlurIn className="mb-10 text-lg leading-relaxed text-[#0E6287]/70">Захиалгат бүтээл, хамтын ажиллагааны талаар бидэнтэй холбогдоно уу.</TextBlurIn>
               <dl className="border-t border-[#0E6287]/20 text-base">
@@ -26,7 +25,18 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <DansranFooter hideContact />
+      <section id="request" className="-mx-5 bg-[#dceff4] px-5 py-10 md:-mx-10 md:px-10 md:py-12">
+        <div className="mx-auto grid max-w-6xl items-start gap-6 md:grid-cols-[1fr_2fr] md:gap-8">
+          <div>
+            <h2 className="text-4xl tracking-[-0.05em] md:text-5xl">Хүсэлт илгээх</h2>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#0E6287]/70">
+              Хүссэн бүтээгдэхүүн, тоо ширхэг, хугацаагаа бичээд илгээгээрэй. Бид тантай эргэн холбогдоно.
+            </p>
+          </div>
+          <CustomRequestForm />
+        </div>
+      </section>
+
     </main>
   )
 }

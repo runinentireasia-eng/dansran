@@ -29,7 +29,7 @@ export function ProductGalleryCard({ product }: { product: DansranProduct }) {
           target="_blank"
           rel="noreferrer"
           data-cursor
-          className="relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#e7dfd2]"
+          className="relative block aspect-square overflow-hidden rounded-[1.5rem] bg-[#e7dfd2]"
         >
           {images.map((src, index) => (
             <img

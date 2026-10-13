@@ -1,5 +1,3 @@
-import CustomRequestForm from "@/components/custom-request-form"
-import DansranFooter from "@/components/dansran-footer"
 import DansranNavbar from "@/components/dansran-navbar"
 import DansranBreadcrumb from "@/components/ui/breadcrumb"
 import { TextBlurIn } from "@/components/ui/text-blur-in"
@@ -11,13 +9,12 @@ const occasions = [
   { title: "Ойн баяр / Тусгай төсөл", description: "Ойн баяр, арга хэмжээ, нээлт болон онцгой захиалгад" },
 ]
 
-// Fill in `image` (e.g. "/custom/product-1.jpg") and `name` once photos are uploaded.
-const madeProducts: { name: string; image?: string }[] = [
-  { name: "Бүтээгдэхүүн 1" },
-  { name: "Бүтээгдэхүүн 2" },
-  { name: "Бүтээгдэхүүн 3" },
-  { name: "Бүтээгдэхүүн 4" },
-  { name: "Бүтээгдэхүүн 5" },
+const madeProducts: { name: string; image: string }[] = [
+  { name: "Эрлэг Номун Хааны Баг", image: "/custom/erleg-nomun-khan-mask.webp" },
+  { name: '"Арслан" хүжний суурь', image: "/custom/arslan-incense-holder.webp" },
+  { name: '"Монгол гутал" үзэг балны сав', image: "/custom/mongol-boot-pen-holder.jpg" },
+  { name: "Талын Домбо", image: "/custom/talyn-dombo.webp" },
+  { name: "Талхан таваг", image: "/custom/talkhan-tavag.webp" },
 ]
 
 export default function CustomPage() {
@@ -56,14 +53,8 @@ export default function CustomPage() {
           <ul className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
             {madeProducts.map((product) => (
               <li key={product.name}>
-                <div data-cursor className="aspect-[4/5] overflow-hidden rounded-sm bg-white/60 ring-1 ring-[#0E6287]/10">
-                  {product.image ? (
-                    <img src={product.image} alt={product.name} className="size-full object-cover" />
-                  ) : (
-                    <div className="flex size-full items-center justify-center">
-                      <img src="/dansran-mark-blue.png" alt="" className="size-8 object-contain opacity-20" />
-                    </div>
-                  )}
+                <div data-cursor className="aspect-square overflow-hidden rounded-sm bg-white ring-1 ring-[#0E6287]/10">
+                  <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="size-full object-contain" />
                 </div>
                 <p className="mt-4 text-sm">{product.name}</p>
               </li>
@@ -72,19 +63,6 @@ export default function CustomPage() {
         </div>
       </section>
 
-      <section id="request" className="bg-[#dceff4] px-5 pb-20 pt-4 md:px-10 md:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_2fr]">
-          <div>
-            <h2 className="text-4xl tracking-[-0.05em] md:text-5xl">Хүсэлт илгээх</h2>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#0E6287]/70">
-              Хүссэн бүтээгдэхүүн, тоо ширхэг, хугацаагаа бичээд илгээгээрэй. Бид тантай эргэн холбогдоно.
-            </p>
-          </div>
-          <CustomRequestForm />
-        </div>
-      </section>
-
-      <DansranFooter />
     </main>
   )
 }
