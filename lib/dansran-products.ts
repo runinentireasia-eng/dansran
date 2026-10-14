@@ -66,6 +66,12 @@ export async function getDansranProducts(): Promise<DansranProduct[]> {
   return baseProducts.map((product) => {
     const live = imagesBySlug.get(product.slug)
     const images = live && live.length > 0 ? live : product.images
-    return { ...product, images: images.slice(0, MAX_IMAGES).map(sized) }
+    const gallery = images.slice(0, MAX_IMAGES).map(sized)
+    if (product.slug === "cej101") {
+      gallery.splice(0, 3, "/hultei-tavag.jpg", "/hultei-tavag-with-box.jpg")
+    } else {
+      gallery.splice(1, 1, `/${product.slug}-with-box.jpg`)
+    }
+    return { ...product, images: [...gallery, "/dansran-gift-bag.jpg"] }
   })
 }

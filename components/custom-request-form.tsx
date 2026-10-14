@@ -1,6 +1,6 @@
 "use client"
 
-import { useActionState } from "react"
+import { useActionState, useState } from "react"
 import { submitCustomRequest, type CustomRequestState } from "@/app/actions/custom-request"
 
 const initialState: CustomRequestState = { status: "idle" }
@@ -10,6 +10,7 @@ const inputClass =
 
 export default function CustomRequestForm() {
   const [state, formAction, pending] = useActionState(submitCustomRequest, initialState)
+  const [fields, setFields] = useState({ name: "", company: "", contact: "", message: "" })
 
   if (state.status === "success") {
     return (
@@ -24,20 +25,22 @@ export default function CustomRequestForm() {
     <form action={formAction} className="grid gap-4 border-t border-[#0E6287]/20 pt-4 md:grid-cols-2 md:gap-x-6">
       <label className="block">
         <span className="text-xs uppercase tracking-[0.18em] text-[#0E6287]/60">Нэр *</span>
-        <input name="name" required maxLength={120} autoComplete="name" className={inputClass} />
+        <input name="name" value={fields.name} onChange={(event) => setFields({ ...fields, name: event.target.value })} required maxLength={120} autoComplete="name" className={inputClass} />
       </label>
       <label className="block">
         <span className="text-xs uppercase tracking-[0.18em] text-[#0E6287]/60">Байгууллага</span>
-        <input name="company" maxLength={160} autoComplete="organization" className={inputClass} />
+        <input name="company" value={fields.company} onChange={(event) => setFields({ ...fields, company: event.target.value })} maxLength={160} autoComplete="organization" className={inputClass} />
       </label>
       <label className="block md:col-span-2">
         <span className="text-xs uppercase tracking-[0.18em] text-[#0E6287]/60">Утас эсвэл и-мэйл *</span>
-        <input name="contact" required maxLength={160} autoComplete="email" className={inputClass} />
+        <input name="contact" value={fields.contact} onChange={(event) => setFields({ ...fields, contact: event.target.value })} required maxLength={160} autoComplete="email" className={inputClass} />
       </label>
       <label className="block md:col-span-2">
         <span className="text-xs uppercase tracking-[0.18em] text-[#0E6287]/60">Таны хүсэлт *</span>
         <textarea
           name="message"
+          value={fields.message}
+          onChange={(event) => setFields({ ...fields, message: event.target.value })}
           required
           minLength={5}
           maxLength={3000}
@@ -49,9 +52,14 @@ export default function CustomRequestForm() {
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div className="flex flex-col gap-3 md:col-span-2 md:flex-row md:items-center md:justify-between">
-        <p aria-live="polite" className="text-sm text-red-700">
-          {state.status === "error" ? state.message : null}
-        </p>
+        <div aria-live="polite" className="text-sm text-red-700">
+          {state.status === "error" && (
+            <>
+              <p>{state.message}</p>
+              <a href="mailto:weavewebhq@gmail.com?subject=Dansran%20request" className="mt-2 inline-block underline">И-мэйлээр илгээх</a>
+            </>
+          )}
+        </div>
         <button
           type="submit"
           disabled={pending}

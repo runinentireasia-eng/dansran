@@ -9,12 +9,12 @@ const occasions = [
   { title: "Ойн баяр / Тусгай төсөл", description: "Ойн баяр, арга хэмжээ, нээлт болон онцгой захиалгад" },
 ]
 
-const madeProducts: { name: string; image: string }[] = [
-  { name: "Эрлэг Номун Хааны Баг", image: "/custom/erleg-nomun-khan-mask.webp" },
-  { name: '"Арслан" хүжний суурь', image: "/custom/arslan-incense-holder.webp" },
-  { name: '"Монгол гутал" үзэг балны сав', image: "/custom/mongol-boot-pen-holder.jpg" },
-  { name: "Талын Домбо", image: "/custom/talyn-dombo.webp" },
-  { name: "Талхан таваг", image: "/custom/talkhan-tavag.webp" },
+const madeProducts: { name: string; image: string; href: string }[] = [
+  { name: "Эрлэг Номун Хааны Баг", image: "/custom/erleg-nomun-khan-mask.webp", href: "https://www.dansran.mn/collections/ceramics/products/erleg-nomun-khan3" },
+  { name: '"Арслан" хүжний суурь', image: "/custom/arslan-incense-holder.webp", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-incense-burner102" },
+  { name: '"Монгол гутал" үзэг балны сав', image: "/custom/mongol-boot-pen-holder.jpg", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-pen-holder1" },
+  { name: "Талын Домбо", image: "/custom/talyn-dombo.webp", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-pitcher2" },
+  { name: "Талхан таваг", image: "/custom/talkhan-tavag.webp", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-bread-bowl4" },
 ]
 
 export default function CustomPage() {
@@ -53,10 +53,12 @@ export default function CustomPage() {
           <ul className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
             {madeProducts.map((product) => (
               <li key={product.name}>
+                <a href={product.href} target="_blank" rel="noopener noreferrer" className="group block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E6287] focus-visible:ring-offset-4">
                 <div data-cursor className="aspect-square overflow-hidden rounded-sm bg-white ring-1 ring-[#0E6287]/10">
                   <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="size-full object-contain" />
                 </div>
-                <p className="mt-4 text-sm">{product.name}</p>
+                <p className="mt-4 text-sm group-hover:underline">{product.name}</p>
+                </a>
               </li>
             ))}
           </ul>

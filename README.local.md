@@ -19,8 +19,8 @@ Open http://127.0.0.1:3000. The site has four routes:
 
 - `/`: home page with the animated ceramic plate.
 - `/collection`: product collection and image galleries.
-- `/custom`: custom products and the request form.
-- `/contact`: contact information.
+- `/custom`: custom products linked to their original store pages.
+- `/contact`: contact information and the request form.
 
 For a production build and a separate TypeScript check:
 
@@ -31,14 +31,23 @@ node node_modules/typescript/bin/tsc --noEmit --incremental false
 
 ## Custom requests
 
-The pages can be previewed without a database. Saving a custom request requires
-the server-only `DATABASE_URL` environment variable and a PostgreSQL database
-with the `custom_requests` table defined in `lib/db/schema.ts`.
+The contact form sends an email to `weavewebhq@gmail.com` through Resend.
+It no longer requires a database or writes to `custom_requests`.
 
-Copy `.env.example` to `.env.local` and set a development database connection
-string. The original repository already ignores `.env.local`. Database
-credentials were not included in the download, and no database has been
-provisioned or modified during this recreation.
+For local delivery, copy `.env.example` to `.env.local` and configure
+`RESEND_API_KEY` and `RESEND_EMAIL_DOMAIN`, then restart the dev server.
+The default sender is `Dansran <requests@dansran.shop>` when the domain is
+`dansran.shop`; use `RESEND_FROM` only to override that sender.
+The sender must use a domain verified in Resend.
+
+For Vercel deployment later, import this GitHub repository and add these same
+two server-only environment variables in the Vercel project settings for the
+environments you use, then redeploy. Never commit real keys to GitHub or use
+`NEXT_PUBLIC_` prefixes. No sending account or credentials are configured yet.
+
+The form shows success only after the email provider accepts the message.
+If configuration is missing or delivery fails, it shows an error and a direct
+email link, retaining the visitor's entered details for another attempt.
 
 The collection reads product images from the existing Dansran Shopify store,
 with fallback image URLs in `lib/dansran-products.ts`. Product links open the
@@ -58,8 +67,8 @@ application behavior, with the requested visual updates listed below.
 - Browser preview: home, collection, custom, and contact pages render; navigation
   works and the product gallery advances to the next image.
 - No browser errors were reported during those checks.
-- Custom-request database writes remain unverified because `DATABASE_URL` was
-  not supplied.
+- Live contact email delivery requires configured Resend credentials and a
+  verified sender; delivery to the inbox has not yet been tested.
 
 Git history and the `origin` remote have been restored from the source
 repository. The 47 Git-tracked source files matched the repository at recreation
