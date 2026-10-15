@@ -16,7 +16,7 @@ export default function ContactPage() {
               <TextBlurIn className="mb-10 text-lg leading-relaxed text-[#0E6287]/70">Захиалгат бүтээл, хамтын ажиллагааны талаар бидэнтэй холбогдоно уу.</TextBlurIn>
               <dl className="border-t border-[#0E6287]/20 text-base">
                 <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Албан тушаал</dt><dd>Маркетинг менежер</dd></div>
-                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Утас</dt><dd><a href="tel:99025078" className="transition-opacity hover:opacity-60">80792969</a></dd></div>
+                <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Утас</dt><dd><a href="tel:99025078" className="transition-opacity hover:opacity-60">99025078</a></dd></div>
                 <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Цахим шуудан</dt><dd><a href="mailto:info@dansran.mn" className="transition-opacity hover:opacity-60">info@dansran.mn</a></dd></div>
                 <div className="flex justify-between gap-6 border-b border-[#0E6287]/20 py-5"><dt className="text-[#0E6287]/60">Вэб</dt><dd><a href="https://www.dansran.mn" target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">www.dansran.mn</a></dd></div>
                 <div className="flex justify-between gap-6 py-5"><dt className="text-[#0E6287]/60">Инстаграм</dt><dd><a href="https://instagram.com/dansran_mongolia" target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">@dansran_mongolia</a></dd></div>
