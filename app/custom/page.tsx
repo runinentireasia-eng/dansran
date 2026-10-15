@@ -1,4 +1,5 @@
 import DansranNavbar from "@/components/dansran-navbar"
+import Link from "next/link"
 import DansranBreadcrumb from "@/components/ui/breadcrumb"
 import { TextBlurIn } from "@/components/ui/text-blur-in"
 
@@ -33,6 +34,7 @@ export default function CustomPage() {
           <TextBlurIn className="mt-6 max-w-xl text-base leading-relaxed text-[#0E6287]/70 md:text-lg" staggerDelay={0.02}>
             Танай байгууллагын хэрэгцээ, зориулалтад тохируулан тусгай бүтээгдэхүүн бүтээнэ.
           </TextBlurIn>
+          <Link href="/order-info" className="mt-6 inline-block rounded-full border border-[#0E6287]/40 px-6 py-3 text-sm transition-colors hover:bg-[#dceff4] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0E6287]">Захиалгын нөхцөл харах →</Link>
           <ul className="mt-12 grid border-t border-[#0E6287]/20 md:grid-cols-2 md:gap-x-10">
             {occasions.map((occasion) => (
               <li key={occasion.title} className="flex items-center justify-between gap-6 border-b border-[#0E6287]/20 py-6">

@@ -68,3 +68,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .cssbuttons-io-button, .cssbuttons-io-button .icon { transition: none; }
 }
 ::selection { background: #e5b04b; color: #172b35; }
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .order-info-motion [data-hover-card] {
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  .order-info-motion [data-hover-card]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgb(14 98 135 / 12%);
+  }
+}
