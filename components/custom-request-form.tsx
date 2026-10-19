@@ -56,7 +56,7 @@ export default function CustomRequestForm() {
           {state.status === "error" && (
             <>
               <p>{state.message}</p>
-              <a href="mailto:weavewebhq@gmail.com?subject=Dansran%20request" className="mt-2 inline-block underline">И-мэйлээр илгээх</a>
+              <a href="mailto:marketing@dansran.mn?subject=Dansran%20request" className="mt-2 inline-block underline">И-мэйлээр илгээх</a>
             </>
           )}
         </div>
