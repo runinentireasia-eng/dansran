@@ -27,7 +27,7 @@ export async function submitCustomRequest(
   const domain = process.env.RESEND_EMAIL_DOMAIN?.trim()
   const from = process.env.RESEND_FROM || (domain && /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(domain) ? `Dansran <requests@${domain}>` : undefined)
   if (!apiKey || !from) {
-    return { status: "error", message: "Хүсэлт илгээх үйлчилгээ түр боломжгүй байна. weavewebhq@gmail.com хаягаар хүсэлтээ илгээнэ үү." }
+    return { status: "error", message: "Хүсэлт илгээх үйлчилгээ түр боломжгүй байна. marketing@dansran.mn хаягаар хүсэлтээ илгээнэ үү." }
   }
 
   try {
@@ -39,7 +39,7 @@ export async function submitCustomRequest(
       },
       body: JSON.stringify({
         from,
-        to: ["weavewebhq@gmail.com"],
+        to: ["marketing@dansran.mn"],
         subject: "Dansran — шинэ бүтээгдэхүүний хүсэлт",
         text: `Нэр: ${name}\nБайгууллага: ${company || "—"}\nУтас эсвэл и-мэйл: ${contact}\n\nХүсэлт:\n${message}`,
         ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) ? { reply_to: contact } : {}),
@@ -49,13 +49,13 @@ export async function submitCustomRequest(
     })
     if (!response.ok) {
       console.error("Contact email rejected", { status: response.status })
-      return { status: "error", message: "Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл weavewebhq@gmail.com хаягаар хүсэлтээ илгээнэ үү." }
+      return { status: "error", message: "Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл marketing@dansran.mn хаягаар хүсэлтээ илгээнэ үү." }
     }
     const result = await response.json() as { id?: string }
     if (!result.id) throw new Error("Email service returned no message ID")
     return { status: "success" }
   } catch {
     console.error("Contact email delivery failed")
-    return { status: "error", message: "Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл weavewebhq@gmail.com хаягаар хүсэлтээ илгээнэ үү." }
+    return { status: "error", message: "Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл marketing@dansran.mn хаягаар хүсэлтээ илгээнэ үү." }
   }
 }
