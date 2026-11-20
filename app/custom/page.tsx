@@ -69,7 +69,7 @@ export default function CustomPage() {
       <section className="bg-[#f6f4ef] px-5 py-16 md:px-10 md:py-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em]">VIP тусгай захиалгат цуглуулга</p>
-          <h2 className="mt-6 max-w-3xl border-b border-[#0E6287]/20 pb-8 text-4xl leading-[1] tracking-[-0.05em] md:text-6xl">Таны төсөөлөл, бидний ур ухаан.</h2>
+          <h2 className="mt-6 max-w-3xl border-b border-[#0E6287]/20 pb-8 text-4xl leading-[1] tracking-[-0.05em] md:text-5xl">Таны төсөөлөл, бидний ур ухаан.</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-10">
             <p className="text-base leading-relaxed text-[#0E6287]/70 md:text-lg">Өөрийн хүссэн хэлбэр, хэмжээ, өнгөний сонголтоор бүтээлгэх боломжтой, гар урлалын өвөрмөц хийцтэй том оврын шаазан эдлэлийн цуглуулга.</p>
             <p className="text-base leading-relaxed text-[#0E6287]/70 md:text-lg">Бүтээл бүрийг таны хүсэл, хэрэгцээнд нийцүүлэн тусгайлан урлана.</p>
