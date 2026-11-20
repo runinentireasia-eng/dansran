@@ -16,6 +16,7 @@ const madeProducts: { name: string; image: string; href: string }[] = [
   { name: '"Монгол гутал" үзэг балны сав', image: "/custom/mongol-boot-pen-holder.jpg", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-pen-holder1" },
   { name: "Талын Домбо", image: "/custom/talyn-dombo.webp", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-pitcher2" },
   { name: "Талхан таваг", image: "/custom/talkhan-tavag.webp", href: "https://www.dansran.mn/collections/ceramics/products/ceramic-bread-bowl4" },
+  { name: "Өлзий аяга 150мл", image: "/custom/olzii-ayga-150ml.webp", href: "https://www.dansran.mn/collections/ceramics/products/mug150ml" },
 ]
 
 export default function CustomPage() {
